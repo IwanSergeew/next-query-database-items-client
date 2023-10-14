@@ -1,3 +1,5 @@
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+
 interface QueryDatabaseItemsConfig {
     enableSearch: boolean;
     perPage: number;
@@ -15,9 +17,11 @@ interface QryProps {
 }
 
 type UpdateQueryProps = {
+    router: AppRouterInstance;
+    pathname: string;
     tableConfig: QueryDatabaseItemsConfig;
     queryProps: QueryDatabaseItemsProps;
 };
-declare const _default: ({ tableConfig, queryProps }: UpdateQueryProps) => void;
+declare const _default: ({ router, pathname, tableConfig, queryProps }: UpdateQueryProps) => void;
 
 export { QryProps, QueryDatabaseItemsConfig, QueryDatabaseItemsProps, _default as updateQuery };

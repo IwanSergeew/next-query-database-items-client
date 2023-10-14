@@ -1,15 +1,14 @@
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { parseSearchParams } from './util';
 import { QueryDatabaseItemsConfig, QueryDatabaseItemsProps } from './types';
-import { usePathname, useRouter } from 'next/navigation';
 
 type UpdateQueryProps = {
+  router: AppRouterInstance;
+  pathname: string;
   tableConfig: QueryDatabaseItemsConfig;
   queryProps: QueryDatabaseItemsProps;
 };
-export default ({ tableConfig, queryProps }: UpdateQueryProps) => {
-  const router = useRouter();
-  const pathname = usePathname();
-
+export default ({ router, pathname, tableConfig, queryProps }: UpdateQueryProps) => {
   const params: [string, string][] = [];
 
   params.push(['page', `${queryProps.page + 1}`]);

@@ -1,16 +1,12 @@
 'use strict';
 
-var navigation = require('next/navigation');
-
 const parseSearchParams = (param) => {
     if (!param?.length)
         return [];
     return Array.isArray(param) ? param : [param];
 };
 
-var updateQuery = ({ tableConfig, queryProps }) => {
-    const router = navigation.useRouter();
-    const pathname = navigation.usePathname();
+var updateQuery = ({ router, pathname, tableConfig, queryProps }) => {
     const params = [];
     params.push(['page', `${queryProps.page + 1}`]);
     if (queryProps.perPage !== tableConfig.perPage)
